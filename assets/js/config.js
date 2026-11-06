@@ -5,7 +5,7 @@ window.REQ_CONFIG = {
   /* Paste the Web App URL from Google Apps Script here (Deploy → Manage
      deployments → Web app → Copy). Until you do, the site runs in PREVIEW
      mode: nothing is recorded and the PDF is marked PREVIEW. */
-  API_URL: "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE",
+  API_URL: "https://script.google.com/macros/s/AKfycbxI-LkUZbPU8lt_y0lW7PKgTGLId8lJQ7PicfNMol_jYJAdbBk9jflhIKb591VDskQa/exec",
 
   /* Departments. Must match DEPARTMENTS in Code.gs (which also sets who approves). */
   DEPARTMENTS: ["Civil Engineering", "Water Engineering", "Mechanical Engineering", "Electrical Engineering"],
