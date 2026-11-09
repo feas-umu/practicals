@@ -1,2 +1,0 @@
-# practicals
-Practical Training Register
