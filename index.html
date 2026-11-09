@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register a Practical · FEAS, Uganda Martyrs University</title>
+  <meta name="description" content="Lecturers of the Faculty of Engineering and Applied Sciences register their course practicals and, when needed, requisition materials.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#13294b">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="preload" href="assets/fonts/Archivo-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site">
+    <div class="brandbar">
+      <div class="inner bar">
+        <a class="brand" href="index.html">
+          <img src="assets/img/crest.png" alt="Uganda Martyrs University crest" width="52" height="53">
+          <span class="brand-text"><strong>Uganda Martyrs University</strong><span>Faculty of Engineering and Applied Sciences<span class="campus">, Fort Portal Campus</span></span></span>
+        </a>
+        <div class="bar-end">
+          <a class="reveal contact" href="#" data-k="mailto" data-v="Z3UuY2EudW11QHNhZWZuYWVk"><svg class="ico" viewBox="0 0 20 16" aria-hidden="true"><path d="M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm.8 2.2v.4L10 8.7l7.2-5.1v-.4L10 7.9z" fill="currentColor"/></svg><span>Email the Dean</span></a>
+          <span class="who">Staff · Practicals</span>
+        </div>
+      </div>
+    </div>
+    <div class="goldrule" aria-hidden="true"></div>
+    <div class="band">
+      <div class="inner">
+        <nav class="tabs" aria-label="Practicals">
+          <a href="index.html" aria-current="page">Register a practical</a>
+          <a href="mine.html">My practicals</a>
+          <a href="equipment.html">Equipment</a>
+          <a href="verify.html">Verify a requisition</a>
+        </nav>
+        <div class="hero">
+          <h1>Register a practical</h1>
+          <p>Record each course unit’s practical sessions in the department register. Need materials, equipment or services? Add a requisition for your Head of Department to approve.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <div class="primary">
+      <div id="previewBanner" class="banner" hidden>
+        <strong>Set-up not finished.</strong> This site is not yet connected to the Faculty register. You can try the form, but nothing is recorded or sent.
+      </div>
+      <div id="editBanner" class="banner edit" hidden></div>
+
+      <form id="pracForm" novalidate>
+        <fieldset>
+          <legend>Term</legend>
+          <div class="grid2">
+            <label>Academic year
+              <select name="academicYear" id="academicYear" required></select>
+            </label>
+            <label>Semester
+              <select name="semester" id="semester" required></select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Section A: Instructor &amp; course details</legend>
+          <label>Instructor name
+            <input name="name" id="name" required maxlength="80" autocomplete="name" placeholder="e.g. Eng. Okello David">
+          </label>
+          <div class="grid2">
+            <label>University email <span class="hint">We email you a code the first time on each device</span>
+              <input name="email" id="email" type="email" required maxlength="120" autocomplete="email" placeholder="name@umu.ac.ug">
+            </label>
+            <label>Phone <span class="hint spacer">&nbsp;</span>
+              <input name="phone" id="phone" type="tel" required maxlength="25" autocomplete="tel" placeholder="e.g. 0772 123456">
+            </label>
+          </div>
+          <label>Department
+            <select name="department" id="department" required></select>
+          </label>
+          <label>Course title
+            <input name="courseTitle" id="courseTitle" required maxlength="150" placeholder="e.g. Soil Mechanics I">
+          </label>
+          <div class="g3 stack">
+            <label>Course code
+              <input name="courseCode" id="courseCode" required maxlength="20" placeholder="e.g. BCE 2103" autocapitalize="characters">
+            </label>
+            <label>Credit units (CU)
+              <input name="creditUnits" id="creditUnits" required inputmode="decimal" maxlength="4" placeholder="e.g. 3">
+            </label>
+            <label>Students <span class="hint inline">(optional)</span>
+              <input name="students" id="students" inputmode="numeric" maxlength="4" placeholder="e.g. 45">
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Section B: Schedule of practical sessions</legend>
+          <div id="sessions" class="lines"></div>
+          <button type="button" class="secondary add" id="addSession">+ Add a session</button>
+          <div id="equipPanel"></div>
+          <label class="mt">Notes <span class="hint">Optional, e.g. groups or special arrangements</span>
+            <textarea name="notes" maxlength="500" rows="2"></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset class="choice">
+          <legend>Materials, equipment or services</legend>
+          <label class="radio"><input type="radio" name="needReq" value="no" checked> <span><strong>Not needed now</strong> — just register the practical. You can make a requisition later from My practicals.</span></label>
+          <label class="radio"><input type="radio" name="needReq" value="yes"> <span><strong>Yes, make a requisition now</strong> — it goes to your Head of Department for approval.</span></label>
+        </fieldset>
+
+        <div id="reqBlock" hidden>
+        <fieldset>
+          <legend>Sessions this requisition is for</legend>
+          <p class="hint lead-hint">Tick the practical sessions the materials and services below are needed for.</p>
+          <div id="cover" class="cover"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Section C: Materials, equipment &amp; services</legend>
+          <div id="items" class="lines"></div>
+          <button type="button" class="secondary add" id="addItem">+ Add an item</button>
+          <div class="subtotal">Total for Section C <strong id="materialsTotal">UGX 0</strong></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Section D: Additional requirements <span class="hint inline">(if any)</span></legend>
+          <div class="field">Transport needs
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="t_vehicle"> Vehicle for fieldwork</label>
+              <label class="check"><input type="checkbox" name="t_fuel"> Fuel support</label>
+              <label class="check"><input type="checkbox" name="t_driver"> Driver</label>
+            </div>
+          </div>
+          <label>Estimated dates for transport
+            <input name="t_dates" maxlength="120" placeholder="e.g. 5 and 19 October 2026">
+          </label>
+          <div class="subhead">External site fees <span class="hint inline">(if applicable)</span></div>
+          <div class="grid2">
+            <label>Site name
+              <input name="s_name" maxlength="120" placeholder="e.g. Kasusu borrow pit">
+            </label>
+            <label>Contact person
+              <input name="s_contact" maxlength="120" placeholder="Name and phone">
+            </label>
+          </div>
+          <label>Estimated cost (UGX)
+            <span class="km-field fare-field"><input name="s_cost" id="siteCost" inputmode="numeric" maxlength="13" autocomplete="off" placeholder="e.g. 50,000"><span class="km-unit" aria-hidden="true">UGX</span></span>
+          </label>
+          <div class="field">Allowances <span class="hint inline">(if applicable)</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="a_fieldStaff"> Field support staff</label>
+              <label class="check"><input type="checkbox" name="a_casuals"> Casual labourers</label>
+              <label class="check"><input type="checkbox" name="a_studentTransport"> Student transport</label>
+            </div>
+          </div>
+          <label>Notes for the Head of Department <span class="hint">Optional</span>
+            <textarea name="r_notes" maxlength="500" rows="2"></textarea>
+          </label>
+        </fieldset>
+
+        <div class="grand">
+          <span>Total requested</span>
+          <strong id="grandTotal">UGX 0</strong>
+          <small id="grandSplit"></small>
+        </div>
+        </div>
+
+        <div class="remember">
+          <label class="check"><input type="checkbox" name="remember"> Remember my details on this device</label>
+          <span class="hint">Leave this off on shared computers.</span>
+          <button type="button" class="linkish forget" hidden>Not you? Clear my details</button>
+        </div>
+        <label class="confirm"><input type="checkbox" id="confirmBox" required> I confirm these details are correct.</label>
+
+        <button type="submit" id="submitBtn">Register the practical</button>
+        <p id="status" class="status" role="status" hidden></p>
+      </form>
+
+      <section id="result" class="result" hidden aria-live="polite">
+        <h2 class="result-title">Done</h2>
+        <p class="result-text"></p>
+        <dl class="facts" id="facts"></dl>
+        <p class="muted small" id="resultNote" hidden>You will get an email when the Head of Department decides. Once approved, print it from <a href="mine.html">My practicals</a>.</p>
+        <div class="actions">
+          <a id="copyLink" class="button" href="#" hidden>Download a copy</a>
+          <a class="button secondary-link" href="mine.html">My practicals</a>
+          <a class="button secondary-link" id="againLink" href="index.html">Register another practical</a>
+        </div>
+      </section>
+    </div>
+
+    <aside class="notes">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><strong>Register</strong> each course unit’s practicals once per semester. It goes straight into the department’s register; no approval is needed.</li>
+        <li><strong>Need materials, equipment or services?</strong> Make a requisition for the sessions that need them, now or later from <a href="mine.html">My practicals</a>.</li>
+        <li>Your <strong>Head of Department</strong> approves the requisition by email, or sends it back with a comment.</li>
+        <li><strong>Print</strong> the approved requisition, fill in the <strong>requisition book</strong>, have it <strong>signed by the HOD</strong>, and take it to the <strong>Finance office</strong>.</li>
+      </ol>
+      <h2>Good to know</h2>
+      <ul>
+        <li>Use your <strong>university email</strong>. The first time on a new phone or computer we email you a 6-digit code.</li>
+        <li>One registration per course unit per semester. To change it, open it from <a href="mine.html">My practicals</a> → <em>Edit practical</em>.</li>
+        <li>A practical can have several requisitions, e.g. one for the lab sessions and one for a field trip.</li>
+        <li>Water Engineering requisitions go to the Head of Civil Engineering.</li>
+        <li>Questions? <a class="reveal" href="#" data-k="mailto" data-v="Z3UuY2EudW11QHNhZWZuYWVk"><svg class="ico" viewBox="0 0 20 16" aria-hidden="true"><path d="M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm.8 2.2v.4L10 8.7l7.2-5.1v-.4L10 7.9z" fill="currentColor"/></svg><span>Email the Dean’s office</span></a> or <a class="reveal" href="#" data-k="tel" data-v="MDc5OTAwOTc3NjUyKw=="><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 1.5l2.6 3.6c.3.5.3 1.1-.1 1.5L6.6 8c1.2 2.4 3 4.2 5.4 5.4l1.4-1.5c.4-.4 1-.5 1.5-.1l3.6 2.6c.5.4.6 1 .3 1.5l-1.3 2.2c-.4.6-1.1.9-1.8.8C8.4 18 2 11.6 1.1 4.3 1 3.6 1.3 2.9 1.9 2.5L4.1 1.2c.5-.3 1.1-.2 1.5.3z" fill="currentColor"/></svg><span>Call the Dean’s office</span></a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <div class="inner">
+      <span>Faculty of Engineering and Applied Sciences, Uganda Martyrs University, P. O. Box 44, Fort Portal</span>
+      <span class="foot-contact"><a class="reveal" href="#" data-k="mailto" data-v="Z3UuY2EudW11QHNhZWZuYWVk"><svg class="ico" viewBox="0 0 20 16" aria-hidden="true"><path d="M2 1h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zm.8 2.2v.4L10 8.7l7.2-5.1v-.4L10 7.9z" fill="currentColor"/></svg><span>Email the Dean’s office</span></a><a class="reveal" href="#" data-k="tel" data-v="MDc5OTAwOTc3NjUyKw=="><svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M5.6 1.5l2.6 3.6c.3.5.3 1.1-.1 1.5L6.6 8c1.2 2.4 3 4.2 5.4 5.4l1.4-1.5c.4-.4 1-.5 1.5-.1l3.6 2.6c.5.4.6 1 .3 1.5l-1.3 2.2c-.4.6-1.1.9-1.8.8C8.4 18 2 11.6 1.1 4.3 1 3.6 1.3 2.9 1.9 2.5L4.1 1.2c.5-.3 1.1-.2 1.5.3z" fill="currentColor"/></svg><span>Call the Dean’s office</span></a></span>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/reqparts.js"></script>
+  <script src="assets/js/equip.js"></script>
+  <script src="assets/js/practical.js"></script>
+</body>
+</html>
